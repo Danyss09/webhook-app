@@ -1,0 +1,35 @@
+basePath: /
+host: localhost:8081
+info:
+  contact: {}
+  description: Ejemplo simple de un servidor de webhook con documentación Swagger.
+  title: Webhook API
+  version: "1.0"
+paths:
+  /webhook:
+    post:
+      consumes:
+      - application/json
+      description: Endpoint para recibir datos enviados mediante POST.
+      parameters:
+      - description: Datos del Webhook
+        in: body
+        name: data
+        required: true
+        schema:
+          type: string
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: Webhook recibido exitosamente
+          schema:
+            type: string
+        "405":
+          description: Método no permitido
+          schema:
+            type: string
+      summary: Recibir datos en el webhook
+      tags:
+      - Webhook
+swagger: "2.0"
